@@ -4,6 +4,7 @@ import common.exception.CustomException;
 import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
@@ -29,9 +30,18 @@ public class UserRealm extends AuthorizingRealm {
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         String userName= (String) getAvailablePrincipal(principals);
 
+        SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
+
+        //设置角色
+
+        //设置权限
 
 
-        return null;
+
+
+
+
+        return info;
     }
     //认证，可以理解为登陆验证
     @Override

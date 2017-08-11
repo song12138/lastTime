@@ -7,12 +7,20 @@
 <body>
 
     <%--<p>${users}</p>--%>
-    <p>.....................................................</p>
-    <c:forEach items="${users}" var="user">
-        <tr>${user.realname}</tr>
-        <tr>${user.username}</tr>
-        <tr>${user.email}</tr>
-    </c:forEach>
+    <table>
+        <tbody>
+        <c:forEach items="${users}" var="user">
+            <tr>${user.realname}</tr>
+            <tr>${user.username}</tr>
+            <tr>${user.employeeNo}</tr>
+            <tr>${user.email}</tr>
+            <tr>${user.locked}</tr>
+            <tr>${user.phone}</tr>
+            <tr>${user.salt}</tr>
+        </c:forEach>
+        </tbody>
+    </table>
+
 </body>
 </html>
 d

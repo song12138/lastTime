@@ -11,7 +11,10 @@
 <head>
     <title>Title</title>
     <meta name="decorator" content="blank"/>
+    <link rel="shortcut icon" type="image/x-icon" href="${ctxStatic}/assert/img/favicon.ico" media="screen" />
     <link rel="stylesheet" href="${ctxStatic}/css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="${ctxStatic}/assert/css/index.css?v=0.102">
+    <link rel="stylesheet" href="${ctxStatic}/assert/css/style.css?v=0.102">
     <script src="${ctxStatic}/js/jquery/jquery.min.js" type="text/javascript"></script>
     <script src="${ctxStatic}/js/bootstrap/bootstrap.js" type="text/javascript"></script>
 </head>

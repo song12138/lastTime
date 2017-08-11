@@ -3,11 +3,15 @@ package pro.controller;
 import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import pro.entity.User;
+import pro.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * Created by paul on 2017/8/10.
@@ -15,6 +19,8 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class loginController {
 
+    @Autowired
+    private UserService userService;
 
     //真正登录的POST请求由Filter完成
     @RequestMapping(value={"/","/login"})
@@ -32,7 +38,10 @@ public class loginController {
     }
 
     @RequestMapping(value = "/success")
-    public String loginSuccess(){
+    public String loginSuccess(Model model){
+
+        List<User> users=userService.findAll();
+        model.addAttribute("users", users);
         return "user";
     }
 }

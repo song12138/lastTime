@@ -28,7 +28,7 @@ public class UserController {
     @RequestMapping(value = "user")
     public String findAllUser(HttpServletRequest request, HttpServletResponse response , Model model){
         //切换数据源
-        DataSourceContextHolder.setDsType(DataSourceType.DATASOURCE1);
+//        DataSourceContextHolder.setDsType(DataSourceType.DATASOURCE1);
 
         List<User> users=userService.findAll();
         model.addAttribute("users", users);

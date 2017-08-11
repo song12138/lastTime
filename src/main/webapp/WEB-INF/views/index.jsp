@@ -10,6 +10,7 @@
 <html>
 <head>
     <title>Title</title>
+    <meta name="decorator" content="blank"/>
     <link rel="stylesheet" href="${ctxStatic}/css/bootstrap/bootstrap.css">
     <script src="${ctxStatic}/js/jquery/jquery.min.js" type="text/javascript"></script>
     <script src="${ctxStatic}/js/bootstrap/bootstrap.js" type="text/javascript"></script>

@@ -10,17 +10,17 @@
     <table>
         <tbody>
         <c:forEach items="${users}" var="user">
-            <tr>${user.realname}</tr>
-            <tr>${user.username}</tr>
-            <tr>${user.employeeNo}</tr>
-            <tr>${user.email}</tr>
-            <tr>${user.locked}</tr>
-            <tr>${user.phone}</tr>
-            <tr>${user.salt}</tr>
+            <%--<tr>${user.realname}</tr>--%>
+            <tr>${user.username}</tr><br>
+            <%--<tr>${user.employeeNo}</tr>--%>
+            <%--<tr>${user.email}</tr>--%>
+            <%--<tr>${user.locked}</tr>--%>
+            <%--<tr>${user.phone}</tr>--%>
+            <%--<tr>${user.salt}</tr>--%>
         </c:forEach>
         </tbody>
+        <p>${msg}</p>
     </table>
 
 </body>
 </html>
-d

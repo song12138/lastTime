@@ -8,7 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**根据url判断数据源
+/**根据url判断数据源,springMVC interceptor
  * Created by paul on 2017/8/11.
  */
 public class UrlDsInterceptor implements HandlerInterceptor {

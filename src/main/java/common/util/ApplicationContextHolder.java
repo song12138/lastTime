@@ -13,57 +13,77 @@ import org.springframework.context.ApplicationContextAware;
  */
 public class ApplicationContextHolder implements ApplicationContextAware,DisposableBean {
 
-    private static final Logger logger = LoggerFactory.getLogger(ApplicationContextHolder.class);
+    private static Logger logger = LoggerFactory.getLogger(ApplicationContextHolder.class);
 
-    private static ApplicationContextHolder instance;
-    private static  ApplicationContext applicationContext = null;
+    private static ApplicationContextHolder instance = null;
 
-    private static ApplicationContextHolder newInstance(){
-        if (null == instance) {
+    private ApplicationContextHolder() {}
+
+    public static ApplicationContextHolder newInstance() {
+        if (instance == null) {
             instance = new ApplicationContextHolder();
         }
         return instance;
     }
 
+    public ApplicationContext applicationContext = null;
+
     /**
-     * @Description 清空contextHolder
-     * @MethodName clearHolder
-     * @param
-     * @return void
-     * @author songxiangfu [2274466718@qq.com]
-     * @Date 2017/8/11 14:17
+     *
+     * @Description: remove ApplicationContext in ApplicationContextHolder
+     * 				 set applicationContext null
+     * @ReturnType void
+     * @Author: William
+     * @CreateTime: 2017-05-17 04:32:48
      */
-    public void clearHolder(){
-        if(logger.isDebugEnabled()){
-            logger.debug("清除ApplicationContextHolder中的ApplicationContext:" + applicationContext);
+    public void clearHolder() {
+        if (logger.isDebugEnabled()){
+            logger.debug("remove ApplicationContext in ApplicationContextHolder :" + applicationContext);
         }
         applicationContext = null;
     }
 
-
     /**
-     * @Description 判断application注入
-     * @MethodName assertApplictionContextInjected
-     * @param
-     * @return void
-     * @author songxiangfu [2274466718@qq.com]
-     * @Date 2017/8/11 14:39
+     *
+     * @Description: get bean from applicationContext by bean name and cast it to required type
+     * @Param: @param name
+     * @Param: @return
+     * @ReturnType T
+     * @Author: William
+     * @CreateTime: 2017-05-17 04:33:21
      */
-    public void assertApplictionContextInjected() {
-        if (ApplicationContextHolder.applicationContext == null) {
-            if (logger.isDebugEnabled()) {
-                logger.debug("applicaitonContext属性未注入");
-            }
-            try {
-                throw new Exception();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-
+    @SuppressWarnings("unchecked")
+    public <T> T getBean(String name) {
+        assertContextInjected();
+        return (T) applicationContext.getBean(name);
     }
 
+    /**
+     *
+     * @Description: get bean from applicationContext by class of type and cast it to required type
+     * @Param: @param requiredType
+     * @Param: @return
+     * @ReturnType T
+     * @Author: William
+     * @CreateTime: 2017-05-17 04:32:39
+     */
+    public <T> T getBean(Class<T> requiredType) {
+        assertContextInjected();
+        return applicationContext.getBean(requiredType);
+    }
 
+    /**
+     *
+     * @Description: check weather zhe applicationContext is null;
+     * @ReturnType void
+     * @Author: William
+     * @CreateTime: 2017-05-17 04:34:26
+     */
+    private void assertContextInjected() {
+        if (instance == null) {
+            logger.warn("applicationContext属性未注入， 请配置SpringContextHolder");
+        }
+    }
 
     @Override
     public void destroy() throws Exception {
@@ -72,19 +92,13 @@ public class ApplicationContextHolder implements ApplicationContextAware,Disposa
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        ApplicationContextHolder.applicationContext = applicationContext;
-
+        ApplicationContextHolder.newInstance().applicationContext = applicationContext;
     }
 
-    @SuppressWarnings("unchecked")
-    public <T> T getBean(String name){
-        assertApplictionContextInjected();
-        return (T) applicationContext.getBean(name);
+    public ApplicationContext getApplicationContext() {
+        assertContextInjected();
+        return applicationContext;
     }
 
-    public <T> T getBean(Class<T> requiredType) {
-        assertApplictionContextInjected();
-        return applicationContext.getBean(requiredType);
-    }
 
 }

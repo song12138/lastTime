@@ -1,14 +1,19 @@
 package pro.controller;
 
+import common.util.ApplicationContextHolder;
+import common.util.CacheUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import pro.entity.User;
+import pro.service.UserService;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -16,6 +21,8 @@ import java.util.Date;
  */
 @Controller
 public class CookeiDemo {
+
+
 
     @RequestMapping(value = "cookie")
     public String cookie(HttpServletRequest request, HttpServletResponse response,Model model){
@@ -42,5 +49,9 @@ public class CookeiDemo {
         model.addAttribute("msg", msg);
         return "user";
     }
+
+
+
+
 
 }

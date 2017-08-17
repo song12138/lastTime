@@ -20,6 +20,10 @@
         </c:forEach>
         </tbody>
         <p>${msg}</p>
+        <p>${age}</p>
+        <p>${height}</p>
+
+
     </table>
 
 </body>

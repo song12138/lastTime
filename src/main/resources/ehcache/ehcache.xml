@@ -7,6 +7,12 @@
     <defaultCache maxEntriesLocalHeap="1000" eternal="false" timeToIdleSeconds="3000" timeToLiveSeconds="6000"
                   overflowToDisk="true" statistics="true"/>
 
+
+    <cache name="SYS_CACHE" maxEntriesLocalHeap="10000" eternal="true" overflowToDisk="true"
+           diskPersistent="true" diskExpiryThreadIntervalSeconds="600" statistics="true"/>
+
     <cache name="passwordRetryCache" maxEntriesLocalHeap="10000" eternal="true" overflowToDisk="true"
            diskPersistent="true" diskExpiryThreadIntervalSeconds="600" statistics="true"/>
+
+
 </ehcache>

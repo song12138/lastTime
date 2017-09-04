@@ -18,19 +18,19 @@ import java.lang.reflect.Method;
 @Component
 public class RedisCGlibProxy implements MethodInterceptor{
 
-    @Autowired
+//    @Autowired
     private ShardedJedisPool shardedJedisPool;
-
-
+//
+//
     private ShardedJedis shardedJedis;
-
-    public ShardedJedis getShardedJedis() {
-        return shardedJedis;
-    }
-
-    public void setShardedJedis(ShardedJedis shardedJedis) {
-        this.shardedJedis = shardedJedis;
-    }
+//
+//    public ShardedJedis getShardedJedis() {
+//        return shardedJedis;
+//    }
+//
+//    public void setShardedJedis(ShardedJedis shardedJedis) {
+//        this.shardedJedis = shardedJedis;
+//    }
 
     //    public ShardedJedisPool getShardedJedisPool() {
 //        return shardedJedisPool;
@@ -49,18 +49,20 @@ public class RedisCGlibProxy implements MethodInterceptor{
 
 
 
-    private Enhancer enhancer=new Enhancer();
+//    private Enhancer enhancer=new Enhancer();
+//
+//    public <T> T getProxy(Class<T> clazz){
+//        //设置需要创建子类的类
+//        enhancer.setSuperclass(clazz);
+//        enhancer.setCallback(this);
+//        //通过字节码技术动态创建子类实例
+//        return (T) enhancer.create();
+//    }
 
-    public <T> T getProxy(Class<T> clazz){
-        //设置需要创建子类的类
-        enhancer.setSuperclass(clazz);
-        enhancer.setCallback(this);
-        //通过字节码技术动态创建子类实例
-        return (T) enhancer.create();
+    @Autowired
+    public RedisCGlibProxy(ShardedJedisPool shardedJedisPool) {
+        this.shardedJedisPool = shardedJedisPool;
     }
-
-
-
 
     @Override
     public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {

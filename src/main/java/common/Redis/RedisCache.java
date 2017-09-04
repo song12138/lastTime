@@ -13,6 +13,8 @@ public class RedisCache implements IRedis{
 //    @Autowired
 //    private  RedisResource redisResource;
 
+
+
     private ShardedJedis shardedJedis;
 
 

@@ -1,6 +1,8 @@
 package pro.entity;
 
 
+import common.cache.BaseCache;
+import common.metaData.BaseEntity;
 import freemarker.template.utility.StringUtil;
 import org.apache.ibatis.type.Alias;
 import org.apache.tiles.request.collection.CollectionUtil;
@@ -13,7 +15,7 @@ import java.util.List;
  * @Date 2017/6/16 0016 11:43
  */
 @Alias("User")
-public class User  {
+public class User extends BaseEntity<User>{
 
     private static final long serialVersionUID = 1464192336123612117L;
 

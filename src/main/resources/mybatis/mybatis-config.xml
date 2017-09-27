@@ -17,15 +17,15 @@
 		<setting name="cacheEnabled" value="true" />
 	</settings>
 
-	<!--<typeHandlers>
-		<typeHandler handler="com.champion.framework.interceptor.TListHandler"
-					 javaType="com.champion.framework.metadata.TList" jdbcType="VARCHAR" />
-	</typeHandlers>
+	<!--<typeHandlers>-->
+		<!--<typeHandler handler="com.champion.framework.interceptor.TListHandler"-->
+					 <!--javaType="com.champion.framework.metadata.TList" jdbcType="VARCHAR" />-->
+	<!--</typeHandlers>-->
 
 	<plugins>
-		&lt;!&ndash; 分页插件 &ndash;&gt;
-		<plugin interceptor="com.champion.framework.interceptor.PageInterceptor"></plugin>
-	</plugins>-->
+		<!-- 分页插件 -->
+		<plugin interceptor="common.interceptor.PageInterceptor"></plugin>
+	</plugins>
 
 
 

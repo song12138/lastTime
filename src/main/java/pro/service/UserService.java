@@ -1,5 +1,6 @@
 package pro.service;
 
+import common.metaData.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -23,6 +24,10 @@ public class UserService {
    @Scheduled(cron = "0 29 10 * * ? *")
     public List<User> findAll(){
         return userDao.findAll();
+    }
+
+    public List<User> findAll(Page<User> page){
+        return userDao.findAll(page);
     }
 
     public List<User> findUserByAttribute(User user){

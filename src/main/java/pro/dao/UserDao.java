@@ -1,6 +1,7 @@
 package pro.dao;
 
 import common.annotation.MybatisDao;
+import common.metaData.Page;
 import pro.entity.User;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
 @MybatisDao
 public interface UserDao {
     List<User> findAll();
+    List<User> findAll(Page<User> page);
 
     List<User> findUserByAttribute(User user);
 }

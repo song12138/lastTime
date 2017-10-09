@@ -6,8 +6,18 @@
          version="3.1">
   <display-name>Archetype Created Web Application</display-name>
 
-  <!--http://blog.csdn.net/u010796790/article/details/52098258-->
-
+  <!--<filter>-->
+    <!--<filter-name>ipfilter</filter-name>-->
+    <!--<filter-class>common.filter.IpFilter</filter-class>-->
+    <!--<init-param>-->
+      <!--<param-name>RejectedlP</param-name>-->
+      <!--<param-value>127.0.0.1</param-value>-->
+    <!--</init-param>-->
+  <!--</filter>-->
+<!--<filter-mapping>-->
+  <!--<filter-name>ipfilter</filter-name>-->
+  <!--<url-pattern>/*</url-pattern>-->
+<!--</filter-mapping>-->
 
 
 

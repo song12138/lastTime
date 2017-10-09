@@ -39,7 +39,7 @@ public class SQLHelper {
      * @param boundSql
      * @param log
      * @return int
-     * @author william [yeemin_shon@163.com]
+     * @author
      * @Date 2017/6/9 0009 13:10
      */
     public static int getCount(final String sql, final Connection connection,
@@ -93,7 +93,7 @@ public class SQLHelper {
      * @param boundSql
      * @param parameterObject 参数对象
      * @return void
-     * @author william [yeemin_shon@163.com]
+     * @author
      * @Date 2017/6/9 0009 13:07
      */
     @SuppressWarnings("unchecked")
@@ -141,7 +141,7 @@ public class SQLHelper {
      * @param sql
      * @param page
      * @return java.lang.String
-     * @author william [yeemin_shon@163.com]
+     * @author
      * @Date 2017/6/9 0009 13:16
      */
     public static String generatePageMySql(String sql, Page<Object> page) {

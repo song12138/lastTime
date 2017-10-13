@@ -117,45 +117,24 @@
 
 
 
+    <!--开启cglib代理-->
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
 
-    <!-- 拦截器配置，拦截顺序：先执行后定义的，排在第一位的最后执行。-->
-    <mvc:interceptors>
-        <mvc:interceptor>
-            <mvc:mapping path="/**"/>
-            <bean id="urlDsInterceptor" class="common.interceptor.UrlDsInterceptor">
-                <property name="DS1">
-                    <list>
-                        <value>/login</value>
-                    </list>
-                </property>
 
-                <property name="DS2">
-                    <list>
-                        <value>/user</value>
-                    </list>
-                </property>
-            </bean>
-        </mvc:interceptor>
-    </mvc:interceptors>
+    <bean id="dataSourceExchange" class="common.dataSource.DataSourceExchange"/>
+    <aop:config>
 
-    <!--<bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
-        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
-        <property name="prefix" value="/WEB-INF/views/"/>
-        <property name="suffix" value=".jsp"/>
-    </bean>-->
+         <aop:aspect ref="dataSourceExchange" id="dataSourceAspect">
+             <!--切面-->
+             <aop:pointcut id="dataSourcePointcut" expression="execution(* pro.service.impl.*.*(..))"/>
+             <aop:before pointcut-ref="dataSourcePointcut" method="before"/>
+             <aop:after pointcut-ref="dataSourcePointcut" method="after"/>
+         </aop:aspect>
 
-    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/views/"/>
-        <property name="suffix" value=".jsp"/>
-    </bean>
 
-    <!-- 对静态资源文件的访问， 将无法mapping到Controller的path交给default servlet handler处理 -->
-    <mvc:default-servlet-handler />
+    </aop:config>
 
-    <!-- 默认配置静态资源地址为 static -->
-    <mvc:resources mapping="/static/**" location="/static/" cache-period="31536000"/>
 
-    <mvc:annotation-driven />
 
 
 
@@ -165,45 +144,12 @@
     <!--<task:annotation-driven scheduler="scheduler" executor="executor" proxy-target-class="true" />-->
 
 
-    <!-- JEDIS SHARD 池配置 -->
-    <bean id="shardedJedisPool" class="redis.clients.jedis.ShardedJedisPool">
-        <constructor-arg index="0" ref="jedisPoolConfig"/>
-        <constructor-arg index="1">
-            <list>
-                <ref bean="jedis.shardInfo.default"/>
-            </list>
-        </constructor-arg>
-    </bean>
-
-    <!-- JEDIS连接池配置 -->
-    <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
-        <property name="maxTotal" value="100" />
-        <property name="maxIdle" value="20" />
-        <property name="maxWaitMillis" value="5000" />
-        <property name="testOnBorrow" value="true" />
-    </bean>
-
-    <!-- JEDIS SHARD信息配置[START]      在此添加REDIS集群配置 -->
-    <bean id="jedis.shardInfo.default" class="redis.clients.jedis.JedisShardInfo">
-        <constructor-arg index="0" value="127.0.0.1" />
-        <constructor-arg index="1" type="int" value="6379" />
-        <constructor-arg index="2" type="java.lang.String" value="127.0.0.1" />
-    </bean>
-    <!-- JEDIS SHARD信息配置 [END] -->
 
 
-    <!-- 缓存代理，使用缓存内容请使用本代理进行操作 请使用接口进行注入 -->
-    <!--<bean id="cacheProxy" class="common.Redis.RedisCGlibProxy">-->
-        <!--<property name="shardedJedisPool">-->
-            <!--<ref bean="shardedJedisPool" />-->
-        <!--</property>-->
-    <!--</bean>-->
-    <bean id="redisCache" class="common.Redis.RedisCache">
-        <property name="shardedJedisPool" ref="shardedJedisPool"/>
-    </bean>
 
 
-    <aop:aspectj-autoproxy proxy-target-class="true"/>
+
+    <bean class="common.context.ApplicationContextHolder"/>
 
 
 </beans>

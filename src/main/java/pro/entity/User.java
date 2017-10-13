@@ -1,11 +1,8 @@
 package pro.entity;
 
 
-import common.cache.BaseCache;
 import common.metaData.BaseEntity;
-import freemarker.template.utility.StringUtil;
 import org.apache.ibatis.type.Alias;
-import org.apache.tiles.request.collection.CollectionUtil;
 
 import java.util.List;
 

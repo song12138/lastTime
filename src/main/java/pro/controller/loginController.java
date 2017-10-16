@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pro.entity.User;
-import pro.service.UserService;
+import pro.service.impl.UserServiceImpl;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -22,7 +22,7 @@ import java.util.List;
 public class loginController {
 
     @Autowired
-    private UserService userService;
+    private UserServiceImpl userServiceImpl;
 
     //真正登录的POST请求由Filter完成
     @RequestMapping(value={"/","/login"})
@@ -42,7 +42,7 @@ public class loginController {
     @RequestMapping(value = "/success")
     public String loginSuccess(Model model){
 
-        List<User> users=userService.findAll();
+        List<User> users= userServiceImpl.findAll();
         model.addAttribute("users", users);
         return "user";
     }

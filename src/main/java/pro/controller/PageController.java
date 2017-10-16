@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import pro.service.UserService;
+import pro.service.impl.UserServiceImpl;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,11 +18,11 @@ import javax.servlet.http.HttpServletResponse;
 public class PageController {
 
     @Autowired
-    private UserService userService;
+    private UserServiceImpl userServiceImpl;
 
     @RequestMapping(value = "/page")
     public String testUserPage(HttpServletRequest request, HttpServletResponse response, Model model) {
-        model.addAttribute("userPage", userService.findAll());
+        model.addAttribute("userPage", userServiceImpl.findAll());
         return "userPage";
     }
 
@@ -32,7 +32,7 @@ public class PageController {
 //        AjaxPage ajaxPage = new AjaxPage();
 //        ajaxPage.setCells(userService.findAll());
 //        Page page = new Page();
-        page.setData(userService.findAll(page));
+        page.setData(userServiceImpl.findAll(page));
         return  page;
     }
 }

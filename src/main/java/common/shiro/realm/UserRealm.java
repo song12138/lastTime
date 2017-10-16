@@ -12,7 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import pro.entity.User;
-import pro.service.UserService;
+import pro.service.impl.UserServiceImpl;
 
 
 /**
@@ -23,7 +23,7 @@ public class UserRealm extends AuthorizingRealm {
     private static final Logger logger = LoggerFactory.getLogger(UserRealm.class);
 
     @Autowired
-    private UserService userService;
+    private UserServiceImpl userServiceImpl;
 
     //授权信息,可以理解为是权限验证
     @Override
@@ -56,7 +56,7 @@ public class UserRealm extends AuthorizingRealm {
         }
         User u = new User();
         u.setUsername(userName);
-            User user=userService.findUserByAttribute(u).get(0);
+            User user= userServiceImpl.findUserByAttribute(u).get(0);
 
 
         if(null == user){

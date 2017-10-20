@@ -13,7 +13,7 @@ public interface ICache {
      * @author songxingfu [2274466718@qq.com]
      * @time 2017/10/10 15:20
      */
-    void  put(String cacheName, String key, Object value);
+    void  put(String key, Object value);
 
 
 
@@ -25,7 +25,7 @@ public interface ICache {
      * @author songxingfu [2274466718@qq.com]
      * @time 2017/10/10 14:03
      */
-    Object get(String cacheName, String key);
+    Object get(String key);
 
     /**
      * @description
@@ -36,7 +36,7 @@ public interface ICache {
      * @author songxingfu [2274466718@qq.com]
      * @time 2017/10/10 15:26
      */
-    Object get(String cacheName, String key, Object defaultValue);
+    Object get(String key, Object defaultValue);
 
     /**
      * @description
@@ -46,7 +46,7 @@ public interface ICache {
      * @author songxingfu [2274466718@qq.com]
      * @time 2017/10/10 14:04
      */
-    void remove(String cacheName, String key);
+    void remove(String key);
 
     /**
      * @description
@@ -57,7 +57,7 @@ public interface ICache {
      * @author songxingfu [2274466718@qq.com]
      * @time 2017/10/10 14:04
      */
-    void update(String cacheName, String key, Object value);
+    void update(String key, Object value);
 
     /**
      * @description 清除缓存
@@ -67,7 +67,7 @@ public interface ICache {
      * @author songxingfu [2274466718@qq.com]
      * @time 2017/10/10 14:05
      */
-    void clear(String cacheName);
+    void clear();
 
 
 }

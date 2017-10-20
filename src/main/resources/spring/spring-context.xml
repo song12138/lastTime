@@ -120,18 +120,16 @@
     <!--开启cglib代理-->
     <aop:aspectj-autoproxy proxy-target-class="true"/>
 
-
+    <!--xml配置aspect-->
     <bean id="dataSourceExchange" class="common.dataSource.DataSourceExchange"/>
     <aop:config>
 
          <aop:aspect ref="dataSourceExchange" id="dataSourceAspect">
              <!--切面-->
-             <aop:pointcut id="dataSourcePointcut" expression="execution(* pro.service.impl.*.*(..))"/>
+             <aop:pointcut id="dataSourcePointcut" expression="execution(* pro.service.impl..*(..))"/>
              <aop:before pointcut-ref="dataSourcePointcut" method="before"/>
              <aop:after pointcut-ref="dataSourcePointcut" method="after"/>
          </aop:aspect>
-
-
     </aop:config>
 
 

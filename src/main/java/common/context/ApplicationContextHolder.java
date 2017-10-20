@@ -1,10 +1,3 @@
-/**
- * @Description:
- * @info-yangpu.winchampion.info.yangpu.common.utils
- * @FileName:ApplicationContextHolder.java
- * @Author: William
- * @CreateTime: 2017-05-17 12:56:51
- */
 package common.context;
 
 import org.slf4j.Logger;
@@ -15,28 +8,17 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
 /**
- * @Description: get ApplicationContext
- * @ClassName: ApplicationContextHolder
- * @Auther: William
- * @CreateTime: 2017-05-17 12:56:51
+ *  保存Spring的 ApplicationContext, 可在任何代码任何地方任何时候取出ApplicaitonContext.
+ * Created by paul on 2017/8/11.
  */
-public final class ApplicationContextHolder implements ApplicationContextAware, DisposableBean {
+public class ApplicationContextHolder implements ApplicationContextAware,DisposableBean {
 
     private static Logger logger = LoggerFactory.getLogger(ApplicationContextHolder.class);
 
     private static ApplicationContextHolder instance = null;
 
-    private ApplicationContextHolder() {
-    }
+    private ApplicationContextHolder() {}
 
-    /**
-     * @description
-     * @methodName newInstance
-     * @param
-     * @return com.sevh.orly.framework.context.ApplicationContextHolder
-     * @author william [yeemin_shon@163.com]
-     * @time 2017/10/9 11:11
-     */
     public static ApplicationContextHolder newInstance() {
         if (instance == null) {
             instance = new ApplicationContextHolder();
@@ -44,7 +26,7 @@ public final class ApplicationContextHolder implements ApplicationContextAware, 
         return instance;
     }
 
-    private ApplicationContext applicationContext = null;
+    public ApplicationContext applicationContext = null;
 
     /**
      *
@@ -55,20 +37,20 @@ public final class ApplicationContextHolder implements ApplicationContextAware, 
      * @CreateTime: 2017-05-17 04:32:48
      */
     public void clearHolder() {
-        if (logger.isDebugEnabled()) {
+        if (logger.isDebugEnabled()){
             logger.debug("remove ApplicationContext in ApplicationContextHolder :" + applicationContext);
         }
         applicationContext = null;
     }
 
     /**
-     * @description get bean from applicationContext by bean name and cast it to required type
-     * @methodName getBean
-     * @param name name
-     * @param <T> T
-     * @return T
-     * @author william [yeemin_shon@163.com]
-     * @time 2017/10/9 11:11
+     *
+     * @Description: get bean from applicationContext by bean name and cast it to required type
+     * @Param: @param name
+     * @Param: @return
+     * @ReturnType T
+     * @Author: William
+     * @CreateTime: 2017-05-17 04:33:21
      */
     @SuppressWarnings("unchecked")
     public <T> T getBean(String name) {
@@ -77,13 +59,13 @@ public final class ApplicationContextHolder implements ApplicationContextAware, 
     }
 
     /**
-     * @description get bean from applicationContext by class of type and cast it to required type
-     * @methodName getBean
-     * @param requiredType requiredType
-     * @param <T> T
-     * @return T
-     * @author william [yeemin_shon@163.com]
-     * @time 2017/10/9 11:12
+     *
+     * @Description: get bean from applicationContext by class of type and cast it to required type
+     * @Param: @param requiredType
+     * @Param: @return
+     * @ReturnType T
+     * @Author: William
+     * @CreateTime: 2017-05-17 04:32:39
      */
     public <T> T getBean(Class<T> requiredType) {
         assertContextInjected();
@@ -113,16 +95,10 @@ public final class ApplicationContextHolder implements ApplicationContextAware, 
         ApplicationContextHolder.newInstance().applicationContext = applicationContext;
     }
 
-    /**
-     * @description
-     * @methodName getApplicationContext
-     * @param
-     * @return org.springframework.context.ApplicationContext
-     * @author william [yeemin_shon@163.com]
-     * @time 2017/10/9 11:12
-     */
     public ApplicationContext getApplicationContext() {
         assertContextInjected();
         return applicationContext;
     }
+
+
 }

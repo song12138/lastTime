@@ -1,5 +1,6 @@
 package common.util;
 
+import common.context.ApplicationContextHolder;
 import net.sf.ehcache.Cache;
 import net.sf.ehcache.CacheManager;
 import net.sf.ehcache.Element;

@@ -21,29 +21,29 @@ import java.util.List;
 @Controller
 public class loginController {
 
-    @Autowired
-    private UserServiceImpl userServiceImpl;
-
-    //真正登录的POST请求由Filter完成
-    @RequestMapping(value={"/","/login"})
-    public String login(HttpServletRequest request, Model model){
-        //获取subject
-        Subject subject = SecurityUtils.getSubject();
-        //获取principal
-        String principal= (String) subject.getPrincipal();
-
-        if(StringUtils.isNotBlank(principal)){
-            //若已登录，则直接跳转至内部首页
-            return "redirect:/success";
-        }
-        return "index";
-    }
-
-    @RequestMapping(value = "/success")
-    public String loginSuccess(Model model){
-
-        List<User> users= userServiceImpl.findAll();
-        model.addAttribute("users", users);
-        return "user";
-    }
+//    @Autowired
+//    private UserServiceImpl userServiceImpl;
+//
+//    //真正登录的POST请求由Filter完成
+//    @RequestMapping(value={"/","/login"})
+//    public String login(HttpServletRequest request, Model model){
+//        //获取subject
+//        Subject subject = SecurityUtils.getSubject();
+//        //获取principal
+//        String principal= (String) subject.getPrincipal();
+//
+//        if(StringUtils.isNotBlank(principal)){
+//            //若已登录，则直接跳转至内部首页
+//            return "redirect:/success";
+//        }
+//        return "index";
+//    }
+//
+//    @RequestMapping(value = "/success")
+//    public String loginSuccess(Model model){
+//
+//        List<User> users= userServiceImpl.findAll();
+//        model.addAttribute("users", users);
+//        return "user";
+//    }
 }

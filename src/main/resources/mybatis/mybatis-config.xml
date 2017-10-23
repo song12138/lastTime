@@ -22,10 +22,10 @@
 					 <!--javaType="com.champion.framework.metadata.TList" jdbcType="VARCHAR" />-->
 	<!--</typeHandlers>-->
 
-	<plugins>
-		<!-- 分页插件 -->
-		<plugin interceptor="common.interceptor.PageInterceptor"></plugin>
-	</plugins>
+	<!--<plugins>-->
+		<!--&lt;!&ndash; 分页插件 &ndash;&gt;-->
+		<!--<plugin interceptor="common.interceptor.PageInterceptor"></plugin>-->
+	<!--</plugins>-->
 
 
 

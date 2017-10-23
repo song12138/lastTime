@@ -6,6 +6,7 @@ import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.slf4j.Logger;
@@ -14,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -39,7 +41,9 @@ public class ShiroController {
         Subject currentUser = SecurityUtils.getSubject();
 
         try {
-            currentUser.login(token);
+            if(!currentUser.isAuthenticated()){
+                currentUser.login(token);
+            }
         } catch (UnknownAccountException e) {
             logger.error("未知账户");
         } catch (IncorrectCredentialsException e) {
@@ -47,8 +51,6 @@ public class ShiroController {
         } catch (LockedAccountException e) {
             logger.error("用户已被锁定");
         }
-//        String principal= (String) currentUser.getPrincipal();
-//        if (StringUtils.isNotBlank(principal)) {
          if(currentUser.isAuthenticated()){
             return "loginSuccess";
         }else {
@@ -67,5 +69,24 @@ public class ShiroController {
     @RequestMapping(value = "/fail")
     public String fail(){
         return "loginFail";
+    }
+
+    @RequestMapping(value = "/logout")
+    public String logout(){
+        return "login";
+    }
+
+    @RequiresPermissions(value = "sys.*")
+    @RequestMapping(value = "/one")
+    @ResponseBody
+    public String one(){
+        return "one";
+    }
+
+    @RequiresPermissions(value = "two")
+    @RequestMapping(value = "/two")
+    @ResponseBody
+    public String two(){
+        return "two";
     }
 }

@@ -1,11 +1,13 @@
 package pro.entity;
 
+import common.metaData.BaseEntity;
+
 /**
  * @Description 资源
  * @author william [yeemin_shon@163.com]
  * @Date 2017/6/16 0016 11:43
  */
-public class Resource {
+public class Resource extends BaseEntity<Resource>{
     private static final long serialVersionUID = -5764552276491009585L;
     private String name; //资源名称
 //    private ResourceType type = ResourceType.menu; //资源类型

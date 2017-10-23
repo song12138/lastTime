@@ -1,5 +1,6 @@
 package pro.entity;
 
+import common.metaData.BaseEntity;
 import org.apache.ibatis.type.Alias;
 
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
  * @Date 2017/6/16 0016 11:43
  */
 @Alias("Role")
-public class Role {
+public class Role extends BaseEntity<Role>{
 
     private static final long serialVersionUID = -4699178964423143927L;
 

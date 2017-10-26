@@ -74,9 +74,6 @@ public class UserRealm extends AuthorizingRealm {
 
         //设置角色
         info.setRoles(roles);
-
-
-
         //设置权限
         info.setStringPermissions(permissions);
 
@@ -92,11 +89,13 @@ public class UserRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException{
        String userName= (String) token.getPrincipal();
         if(!StringUtils.isNotBlank(userName)){
-            try {
-                throw new CustomException();
-            } catch (CustomException e) {
-                e.printStackTrace();
-            }
+//            try {
+//                throw new CustomException();
+//            } catch (CustomException e) {
+////                e.printStackTrace();
+//                return null;
+//            }
+            return null;
         }
         User u = new User();
         u.setUsername(userName);

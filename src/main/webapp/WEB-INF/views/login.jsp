@@ -13,13 +13,16 @@
     <meta name="decorator" content="blank"/>
 </head>
 <body>
-<form action="${ctx}/shiro/login" method="POST">
-    姓名：<input type="text" name="username"/><br/>
-    密码：<input type="text" name="password"/><br/>
+<form action="${ctx}/login" method="POST">
+    姓名：<input type="text" name="username" value="${username}"/><br/>
+    密码：<input type="text" name="password" value="${password}"/><br/>
     <%--验证：<input type="text" name="verifyCode"/>--%>
     <%--&nbsp;&nbsp;--%>
     <%--<img id="verifyCodeImage" onclick="reloadVerifyCode()" src="<%=request.getContextPath()%>/mydemo/getVerifyCodeImage"/><br/>--%>
+    <radio></radio>
     <input type="submit" value="确认"/>
+    <p>${error}</p>
+</form>
 
 </body>
 </html>

@@ -14,11 +14,20 @@
 <body>
 <p>登陆成功</p>
 <input id="logout" value="退出" type="button" onclick='logout()'/>
+<%--<shiro:hasPermission name="one">--%>
+<a href="${ctx}/one">one</a>
+<%--</shiro:hasPermission>--%>
+<shiro:hasPermission name="two">
+<a href="${ctx}/two">two</a>
+</shiro:hasPermission>
+<shiro:hasPermission name="three">
+<a href="${ctx}/three">three</a>
+</shiro:hasPermission>
 </body>
 </html>
 <script type="text/javascript">
     function logout () {
-        window.location.href="${ctx}/shiro/logout";
+        window.location.href="${ctx}/logout";
     }
 </script>
 

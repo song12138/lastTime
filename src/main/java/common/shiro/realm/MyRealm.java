@@ -1,5 +1,6 @@
 package common.shiro.realm;
 
+import org.apache.shiro.session.mgt.eis.SessionDAO;
 import pro.service.ShiroService;
 import pro.entity.SysUser;
 import org.apache.shiro.authc.*;

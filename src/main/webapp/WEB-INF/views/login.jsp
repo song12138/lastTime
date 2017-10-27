@@ -19,7 +19,7 @@
     <%--验证：<input type="text" name="verifyCode"/>--%>
     <%--&nbsp;&nbsp;--%>
     <%--<img id="verifyCodeImage" onclick="reloadVerifyCode()" src="<%=request.getContextPath()%>/mydemo/getVerifyCodeImage"/><br/>--%>
-    <radio></radio>
+    <input type="checkbox" name="rememberMe">
     <input type="submit" value="确认"/>
     <p>${error}</p>
 </form>

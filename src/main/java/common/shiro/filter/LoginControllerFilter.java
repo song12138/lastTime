@@ -36,7 +36,7 @@ public class LoginControllerFilter extends FormAuthenticationFilter {
         Collection<Session> sessions = sessionDAO.getActiveSessions();
 
         if(null != sessions && StringUtils.isNotBlank(username)){
-            sessions.forEach(session -> {
+            sessions.stream().forEach(session -> {
                 String ss= String.valueOf(session.getAttribute(DefaultSubjectContext.PRINCIPALS_SESSION_KEY));
                 if(username.equals(ss)){
                     sessionDAO.delete(session);

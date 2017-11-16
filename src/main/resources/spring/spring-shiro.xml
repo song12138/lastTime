@@ -124,6 +124,10 @@
         <property name="successUrl" value="/success"/>
     </bean>
 
+    <bean id="kickoutFilter" class="common.shiro.filter.KickoutFilter">
+        <property name="sessionDAO" ref="sessionDao"/>
+    </bean>
+
 
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager"/>
@@ -134,6 +138,7 @@
         <property name="filters">
             <map>
                 <entry key="authc" value-ref="formAuthenticationFilter"/>
+                <entry key="kickOut" value-ref="kickoutFilter"/>
             </map>
         </property>
         <property name="filterChainDefinitions" >
@@ -142,7 +147,7 @@
                /login = authc
                 /logout = logout
                 /three/* = anon
-
+                /** =kickOut
 
 
 
@@ -153,8 +158,16 @@
 
 
 
-
-    <aop:config proxy-target-class="true"/>
+    <!--
+       方法前添加
+           @RequiresPermissions,
+           @RequiresRoles,
+           @RequiresUser,
+           @RequiresGuest,
+           @RequiresAuthentication
+       等注解实现权限拦截配置
+   -->
+    <aop:config proxy-target-class="true"/><!--aop实现拦截-->
     <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
         <property name="securityManager" ref="securityManager"/>
     </bean>

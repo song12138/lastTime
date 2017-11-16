@@ -1424,7 +1424,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    var dataModel = el.dataModel || ecModel.getSeriesByIndex(el.seriesIndex);
 	                    params = dataModel && dataModel.getDataParams(el.dataIndex, el.dataType) || {};
 	                }
-	                // If element has custom eventData of components
+	                // If element has session eventData of components
 	                else if (el && el.eventData) {
 	                    params = zrUtil.extend({}, el.eventData);
 	                }
@@ -35484,7 +35484,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                }
 	                else {
 	                    var regionModel = mapOrGeoModel.getRegionModel(region.name);
-	                    // Package custom mouse event for geo component
+	                    // Package session mouse event for geo component
 	                    compoundPath.eventData = {
 	                        componentType: 'geo',
 	                        geoIndex: mapOrGeoModel.componentIndex,
@@ -38276,7 +38276,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return points;
 	    }
 
-	    // Package custom mouse event.
+	    // Package session mouse event.
 	    function packEventData(el, seriesModel, itemNode) {
 	        el.eventData = {
 	            componentType: 'series',

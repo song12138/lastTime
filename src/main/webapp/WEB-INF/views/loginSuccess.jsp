@@ -23,6 +23,9 @@
 <shiro:hasPermission name="three">
 <a href="${ctx}/three">three</a>
 </shiro:hasPermission>
+
+<p>${time}</p>
+
 </body>
 </html>
 <script type="text/javascript">

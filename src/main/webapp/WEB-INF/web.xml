@@ -70,16 +70,23 @@
   </filter-mapping>
 
 
-  <!--2、在web.xml配置监听器ContextLoaderListener（listener-class） -->
-  <listener>
-    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-  </listener>
+  <!--&lt;!&ndash;2、在web.xml配置监听器ContextLoaderListener（listener-class） &ndash;&gt;                                                                                                                                                                                    -->
+  <!--<listener>-->
+    <!--<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>-->
+  <!--</listener>-->
 
-  <!--3、部署applicationContext的xml文件：contextConfigLocation（context-param下的param-name） -->
-  <context-param>
-    <param-name>contextConfigLocation</param-name>
-    <param-value>classpath*:spring/spring-*.xml</param-value>
-  </context-param>
+  <!--&lt;!&ndash;3、部署applicationContext的xml文件：contextConfigLocation（context-param下的param-name） &ndash;&gt;-->
+  <!--<context-param>-->
+    <!--<param-name>contextConfigLocation</param-name>-->
+    <!--<param-value>classpath*:spring/spring-*.xml</param-value>-->
+  <!--</context-param>-->
+
+
+  <!--项目中使用spring框架有2种方式：
+1）listener下的ContextLoaderListener 是一种引入方式，默认读取/WEB-INF/applicationContext.xml
+2）若是spring-web项目，DispatcherServlet 也是一种引入方式，默认读取/WEB-INF/${servlet-name}-servlet.xml
+倘若以上2种配置都引入了，那么全局性的bean配置文件会被加载2次；而且2种方式的各自配置文件里的配置项在某种意义上并不是合并互补，
+而是各成一个体系（虽然普通的bean看似是都加载到全局上下文来了，但还是有一些特殊bean和配置项没有按预期的那样工作）；-->
 
   <!--4、DispatcherServlet是前置控制器，配置在web.xml文件中的。拦截匹配的请求，Servlet拦截匹配规则要自已定义，把拦截下来的请求，依据某某规则分发到目标Controller(我们写的Action)来处理。-->
   <servlet>
@@ -87,7 +94,7 @@
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
     <init-param>
       <param-name>contextConfigLocation</param-name>
-      <param-value>classpath*:spring/spring-context.xml</param-value>
+      <param-value>classpath*:spring/spring-*.xml</param-value>
     </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
@@ -108,6 +115,8 @@
     <welcome-file>/WEB-INF/views/login.jsp</welcome-file>
   </welcome-file-list>
 
+
+  <!-- 使用shiro配置错误页 -->
   <error-page>
     <error-code>401</error-code>
     <location>/WEB-INF/views/error-page/error401.jsp</location>

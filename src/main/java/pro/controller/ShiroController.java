@@ -40,59 +40,22 @@ public class ShiroController {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
-//        Subject currentUser = SecurityUtils.getSubject();
-//
-//        if (currentUser.isAuthenticated()) {
-//            return "redirect:/success";
-//            }
-
         String error = null;
 
-        String exceptionClassName= (String) request.getAttribute("shiroLoginFailure");
+
+        String exceptionClassName = (String) request.getAttribute("shiroLoginFailure");
 
         if (UnknownAccountException.class.getName().equals(exceptionClassName)) {
             error = "用户名";
         } else if (IncorrectCredentialsException.class.getName().equals(exceptionClassName)) {
             error = "密码错误";
-        }  else if (exceptionClassName != null) {
+        } else if (exceptionClassName != null) {
             error = "其他错误：" + exceptionClassName;
         }
         model.addAttribute("username", username);
         model.addAttribute("password", password);
         model.addAttribute("error", error);
 
-//        UsernamePasswordToken token = new UsernamePasswordToken(username, password);
-//        Subject currentUser = SecurityUtils.getSubject();
-
-//        try {
-//            if (!currentUser.isAuthenticated()) {
-//                token.setRememberMe(true);
-//                currentUser.login(token);
-//            }
-//        } catch (UnknownAccountException e) {
-//            logger.error("未知账户");
-//            error = "未知账户";
-//        } catch (IncorrectCredentialsException e) {
-//            logger.error("密码错误");
-//            error = "密码错误";
-//        } catch (LockedAccountException e) {
-//            logger.error("用户已被锁定");
-//            error = "用户已被锁定";
-//        } catch (ExcessiveAttemptsException e) {
-//            logger.error("提示：登陆失败错误次数过多，请五分钟后重新登陆");
-//            error = "提示：登陆失败错误次数过多，请五分钟后重新登陆";
-//        }finally {
-//            model.addAttribute("username", username);
-//            model.addAttribute("password", password);
-//
-//            if (currentUser.isAuthenticated()) {
-//                return "redirect:/success";
-//            } else {
-//                token.clear();
-//                model.addAttribute("error", error);
-//                return "login";
-//            }
-//        }
 
         return "/login";
 
@@ -115,30 +78,30 @@ public class ShiroController {
 //    }
 
     @RequestMapping(value = "/logout")
-    public String logout(){
+    public String logout() {
         return "login";
     }
 
     @RequiresPermissions(value = "one")
     @RequestMapping(value = "/one")
-    public String one(){
+    public String one() {
         return "permission/one";
     }
 
     @RequiresPermissions(value = "two")
     @RequestMapping(value = "/two")
-    public String two(){
+    public String two() {
         return "permission/two";
     }
 
     @RequiresPermissions(value = "three")
     @RequestMapping(value = "/three")
-    public String three(){
+    public String three() {
         return "permission/three";
     }
 
-    @RequestMapping(value="/three/add")
-    public void  addUser(HttpServletRequest request){
+    @RequestMapping(value = "/three/add")
+    public void addUser(HttpServletRequest request) {
         SysUser sysUser = new SysUser();
         sysUser.setUsername(request.getParameter("username"));
         sysUser.setPassword(request.getParameter("password"));

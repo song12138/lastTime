@@ -1,5 +1,7 @@
 package common.constant;
 
+import org.apache.commons.lang3.StringUtils;
+
 /**
  * Created by paul on 2017/10/18.
  */
@@ -12,4 +14,5 @@ public class Global {
      * 系统缓存
      */
     public static final String SYS_CACHE = "sysCache";
+
 }

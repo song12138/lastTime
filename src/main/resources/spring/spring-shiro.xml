@@ -42,8 +42,13 @@
         <property name="cacheManager" ref="shiroCacheManager"/>
         <property name="sessionIdGenerator" ref="sessionIdGenerator"/>
     </bean>
+    <!--&lt;!&ndash; 自定义会话DAO &ndash;&gt;-->
+    <!--<bean id="sessionDao" class="common.shiro.SessionDao">-->
+        <!--<property name="cacheManager" ref="shiroCacheManager"/>-->
+        <!--<property name="sessionIdGenerator" ref="sessionIdGenerator"/>-->
+    <!--</bean>-->
 
-    <!--&lt;!&ndash; 会话管理器 &ndash;&gt;-->
+    <!-- 会话管理器 -->
     <bean id="sessionManager"
           class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
         <property name="globalSessionTimeout" value="1800000"/>
@@ -55,7 +60,7 @@
         <property name="sessionIdCookie" ref="sessionIdCookie"/>
     </bean>
     <!---->
-    <!--&lt;!&ndash; 会话验证调度器 &ndash;&gt;-->
+    <!-- 会话验证调度器 -->
     <bean id="sessionValidationScheduler" class="org.apache.shiro.session.mgt.quartz.QuartzSessionValidationScheduler">
         <property name="sessionValidationInterval" value="1800000"/>
         <property name="sessionManager" ref="sessionManager"/>
@@ -120,13 +125,13 @@
         <property name="usernameParam" value="username"/>
         <property name="passwordParam" value="password"/>
         <property name="rememberMeParam" value="rememberMe"/>
-        <property name="loginUrl" value="/login"/>
-        <property name="successUrl" value="/success"/>
+        <!--<property name="loginUrl" value="/login"/>-->
+        <!--<property name="successUrl" value="/success"/>-->
     </bean>
 
-    <bean id="kickoutFilter" class="common.shiro.filter.KickoutFilter">
-        <property name="sessionDAO" ref="sessionDao"/>
-    </bean>
+    <!--<bean id="kickoutFilter" class="common.shiro.filter.KickoutFilter">-->
+        <!--<property name="sessionDAO" ref="sessionDao"/>-->
+    <!--</bean>-->
 
 
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
@@ -138,7 +143,7 @@
         <property name="filters">
             <map>
                 <entry key="authc" value-ref="formAuthenticationFilter"/>
-                <entry key="kickOut" value-ref="kickoutFilter"/>
+                <!--<entry key="kickOut" value-ref="kickoutFilter"/>-->
             </map>
         </property>
         <property name="filterChainDefinitions" >
@@ -147,7 +152,7 @@
                /login = authc
                 /logout = logout
                 /three/* = anon
-                /** =kickOut
+                <!--/** =kickOut-->
 
 
 

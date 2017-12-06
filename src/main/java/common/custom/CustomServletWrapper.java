@@ -1,4 +1,4 @@
-package common.Custom;
+package common.custom;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;

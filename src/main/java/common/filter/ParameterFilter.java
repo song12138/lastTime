@@ -1,6 +1,6 @@
 package common.filter;
 
-import common.Custom.CustomServletWrapper;
+import common.custom.CustomServletWrapper;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.FilterChain;

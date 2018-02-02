@@ -2,80 +2,78 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
-       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:task="http://www.springframework.org/schema/task"
-       xmlns:aop="http://www.springframework.org/schema/aop"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
 
     <context:property-placeholder location="classpath*:*.properties" ignore-unresolvable="true"/>
 
 
-
-
-
     <bean id="ds1" class="com.alibaba.druid.pool.DruidDataSource">
         <!-- 数据库基本信息配置 -->
-        <property name = "url" value = "${url}" />
-        <property name = "username" value = "${jdbc.username}" />
-        <property name = "password" value = "${jdbc.password}" />
-        <property name = "driverClassName" value = "${driverClassName}" />
-        <property name = "filters" value = "${filters}" />
+        <property name="url" value="${url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <property name="driverClassName" value="${driverClassName}"/>
+        <property name="filters" value="${filters}"/>
         <!-- 最大并发连接数 -->
-        <property name = "maxActive" value = "${maxActive}" />
+        <property name="maxActive" value="${maxActive}"/>
         <!-- 初始化连接数量 -->
-        <property name = "initialSize" value = "${initialSize}" />
+        <property name="initialSize" value="${initialSize}"/>
         <!-- 配置获取连接等待超时的时间 -->
-        <property name = "maxWait" value = "${maxWait}" />
+        <property name="maxWait" value="${maxWait}"/>
         <!-- 最小空闲连接数 -->
-        <property name = "minIdle" value = "${minIdle}" />
+        <property name="minIdle" value="${minIdle}"/>
         <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
-        <property name = "timeBetweenEvictionRunsMillis" value ="${timeBetweenEvictionRunsMillis}" />
+        <property name="timeBetweenEvictionRunsMillis" value="${timeBetweenEvictionRunsMillis}"/>
         <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
-        <property name = "minEvictableIdleTimeMillis" value ="${minEvictableIdleTimeMillis}" />
-        <property name = "validationQuery" value = "${validationQuery}" />
-        <property name = "testWhileIdle" value = "${testWhileIdle}" />
-        <property name = "testOnBorrow" value = "${testOnBorrow}" />
-        <property name = "testOnReturn" value = "${testOnReturn}" />
-        <property name = "maxOpenPreparedStatements" value ="${maxOpenPreparedStatements}" />
+        <property name="minEvictableIdleTimeMillis" value="${minEvictableIdleTimeMillis}"/>
+        <property name="validationQuery" value="${validationQuery}"/>
+        <property name="testWhileIdle" value="${testWhileIdle}"/>
+        <property name="testOnBorrow" value="${testOnBorrow}"/>
+        <property name="testOnReturn" value="${testOnReturn}"/>
+        <property name="maxOpenPreparedStatements" value="${maxOpenPreparedStatements}"/>
         <!-- 打开 removeAbandoned 功能 -->
-        <property name = "removeAbandoned" value = "${removeAbandoned}" />
+        <property name="removeAbandoned" value="${removeAbandoned}"/>
         <!-- 1800 秒，也就是 30 分钟 -->
-        <property name = "removeAbandonedTimeout" value ="${removeAbandonedTimeout}" />
+        <property name="removeAbandonedTimeout" value="${removeAbandonedTimeout}"/>
         <!-- 关闭 abanded 连接时输出错误日志 -->
-        <property name = "logAbandoned" value = "${logAbandoned}" />
+        <property name="logAbandoned" value="${logAbandoned}"/>
     </bean>
 
     <bean id="ds2" class="com.alibaba.druid.pool.DruidDataSource">
         <!-- 数据库基本信息配置 -->
-        <property name = "url" value = "${url2}" />
-        <property name = "username" value = "${jdbc.username}" />
-        <property name = "password" value = "${jdbc.password}" />
-        <property name = "driverClassName" value = "${driverClassName}" />
-        <property name = "filters" value = "${filters}" />
+        <property name="url" value="${url2}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <property name="driverClassName" value="${driverClassName}"/>
+        <property name="filters" value="${filters}"/>
         <!-- 最大并发连接数 -->
-        <property name = "maxActive" value = "${maxActive}" />
+        <property name="maxActive" value="${maxActive}"/>
         <!-- 初始化连接数量 -->
-        <property name = "initialSize" value = "${initialSize}" />
+        <property name="initialSize" value="${initialSize}"/>
         <!-- 配置获取连接等待超时的时间 -->
-        <property name = "maxWait" value = "${maxWait}" />
+        <property name="maxWait" value="${maxWait}"/>
         <!-- 最小空闲连接数 -->
-        <property name = "minIdle" value = "${minIdle}" />
+        <property name="minIdle" value="${minIdle}"/>
         <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
-        <property name = "timeBetweenEvictionRunsMillis" value ="${timeBetweenEvictionRunsMillis}" />
+        <property name="timeBetweenEvictionRunsMillis" value="${timeBetweenEvictionRunsMillis}"/>
         <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
-        <property name = "minEvictableIdleTimeMillis" value ="${minEvictableIdleTimeMillis}" />
-        <property name = "validationQuery" value = "${validationQuery}" />
-        <property name = "testWhileIdle" value = "${testWhileIdle}" />
-        <property name = "testOnBorrow" value = "${testOnBorrow}" />
-        <property name = "testOnReturn" value = "${testOnReturn}" />
-        <property name = "maxOpenPreparedStatements" value ="${maxOpenPreparedStatements}" />
+        <property name="minEvictableIdleTimeMillis" value="${minEvictableIdleTimeMillis}"/>
+        <property name="validationQuery" value="${validationQuery}"/>
+        <property name="testWhileIdle" value="${testWhileIdle}"/>
+        <property name="testOnBorrow" value="${testOnBorrow}"/>
+        <property name="testOnReturn" value="${testOnReturn}"/>
+        <property name="maxOpenPreparedStatements" value="${maxOpenPreparedStatements}"/>
         <!-- 打开 removeAbandoned 功能 -->
-        <property name = "removeAbandoned" value = "${removeAbandoned}" />
+        <property name="removeAbandoned" value="${removeAbandoned}"/>
         <!-- 1800 秒，也就是 30 分钟 -->
-        <property name = "removeAbandonedTimeout" value ="${removeAbandonedTimeout}" />
+        <property name="removeAbandonedTimeout" value="${removeAbandonedTimeout}"/>
         <!-- 关闭 abanded 连接时输出错误日志 -->
-        <property name = "logAbandoned" value = "${logAbandoned}" />
+        <property name="logAbandoned" value="${logAbandoned}"/>
     </bean>
-    
+
     <bean id="dataSource" class="common.dataSource.DynamicDataSource">
         <property name="targetDataSources">
             <map>
@@ -113,8 +111,18 @@
     </bean>
 
 
-
-
+    <!--<bean id="mapperScanner" class="tk.mybatis.spring.mapper.MapperScannerConfigurer">-->
+    <!--<property name="basePackage" value="pro.dao"/>-->
+    <!--<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>-->
+    <!--<property name="annotationClass" value="common.annotation.MybatisDao"/>-->
+    <!--<property name="properties">-->
+    <!--<value>-->
+    <!--mappers=common.Mapper.Mapper-->
+    <!--notEmpty=false-->
+    <!--IDENTITY=MYSQL-->
+    <!--</value>-->
+    <!--</property>-->
+    <!--</bean>-->
 
 
     <context:component-scan base-package="pro,common">
@@ -128,7 +136,6 @@
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
 
-
     <!--开启cglib代理-->
     <aop:aspectj-autoproxy proxy-target-class="true"/>
 
@@ -136,53 +143,51 @@
     <bean id="dataSourceExchange" class="common.dataSource.DataSourceExchange"/>
     <aop:config>
 
-         <aop:aspect ref="dataSourceExchange" id="dataSourceAspect">
-             <!--切面-->
-             <aop:pointcut id="dataSourcePointcut" expression="execution(* pro.service.impl..*(..))"/>
-             <aop:before pointcut-ref="dataSourcePointcut" method="before"/>
-             <aop:after pointcut-ref="dataSourcePointcut" method="after"/>
-         </aop:aspect>
+        <aop:aspect ref="dataSourceExchange" id="dataSourceAspect">
+            <!--切面-->
+            <aop:pointcut id="dataSourcePointcut" expression="execution(* pro.service.impl..*(..))"/>
+            <aop:before pointcut-ref="dataSourcePointcut" method="before"/>
+            <aop:after pointcut-ref="dataSourcePointcut" method="after"/>
+        </aop:aspect>
     </aop:config>
-
-
 
 
     <!--异步执行和任务调度-->
     <!--spring 异步任务多线程与定时任务的处理，@Async，@Scheduled-->
     <!--<task:executor id="executor" pool-size="10"/>-->
     <!--<task:scheduler id="scheduler" pool-size="10"/>-->
-    <!--<task:annotation-driven scheduler="scheduler" executor="executor" proxy-target-class="true" />-->
+    <!--<task:annotation-driven scheduler="scheduler" executor="executor" proxy-target-class="true"/>-->
 
+    <!--<task:scheduler id="scheduler" pool-size="10"/>-->
+    <!--<task:annotation-driven proxy-target-class="true" scheduler="scheduler"/>-->
 
-
-
-
-
-
-
+    <!--<task:scheduled-tasks>-->
+        <!--<task:scheduled ref="indexTimeTask" method="updataIndex" cron="0/10 * *  * * ?" />-->
+    <!--</task:scheduled-tasks>-->
 
     <!--线程池-->
     <!-- spring thread pool executor -->
-       <!--<bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">-->
-           <!--&lt;!&ndash; 线程池维护线程的最少数量 &ndash;&gt;-->
-           <!--<property name="corePoolSize" value="5" />-->
-           <!--&lt;!&ndash; 允许的空闲时间 &ndash;&gt;-->
-           <!--<property name="keepAliveSeconds" value="200" />-->
-           <!--&lt;!&ndash; 线程池维护线程的最大数量 &ndash;&gt;-->
-           <!--<property name="maxPoolSize" value="10" />-->
-           <!--&lt;!&ndash; 缓存队列 &ndash;&gt;-->
-            <!--<property name="queueCapacity" value="20" />-->
-            <!--&lt;!&ndash; 对拒绝task的处理策略 &ndash;&gt;-->
-            <!--<property name="rejectedExecutionHandler">-->
-                <!--<bean class="java.util.concurrent.ThreadPoolExecutor$CallerRunsPolicy" />-->
-            <!--</property>-->
-        <!--</bean>-->
-
-
-
+    <!--<bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">-->
+    <!--&lt;!&ndash; 线程池维护线程的最少数量 &ndash;&gt;-->
+    <!--<property name="corePoolSize" value="5" />-->
+    <!--&lt;!&ndash; 允许的空闲时间 &ndash;&gt;-->
+    <!--<property name="keepAliveSeconds" value="200" />-->
+    <!--&lt;!&ndash; 线程池维护线程的最大数量 &ndash;&gt;-->
+    <!--<property name="maxPoolSize" value="10" />-->
+    <!--&lt;!&ndash; 缓存队列 &ndash;&gt;-->
+    <!--<property name="queueCapacity" value="20" />-->
+    <!--&lt;!&ndash; 对拒绝task的处理策略 &ndash;&gt;-->
+    <!--<property name="rejectedExecutionHandler">-->
+    <!--<bean class="java.util.concurrent.ThreadPoolExecutor$CallerRunsPolicy" />-->
+    <!--</property>-->
+    <!--</bean>-->
 
 
     <bean class="common.context.ApplicationContextHolder"/>
 
+
+    <bean id="user" class="common.FactoryBean.UserFactoryBean">
+        <property name="userInfo" value="sxf,宋祥富"/>
+    </bean>
 
 </beans>

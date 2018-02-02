@@ -3,6 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
+<%@taglib prefix="custom" uri="/WEB-INF/tlds/custom.tld" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <c:set var="ctxStatic" value="${pageContext.request.contextPath}/static"/>
 <%--<script type="text/javascript" var ctx="${ctx}" var ctxStatic="${ctxStatic}"/>--%>

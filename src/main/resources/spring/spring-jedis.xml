@@ -4,53 +4,6 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-
-    <!--<context:component-scan base-package="redis" />-->
-
-    <!--&lt;!&ndash; JEDIS SHARD 池配置 &ndash;&gt;-->
-    <!--<bean id="shardedJedisPool" class="redis.clients.jedis.ShardedJedisPool">-->
-        <!--<constructor-arg index="0" ref="jedisPoolConfig"/>-->
-        <!--<constructor-arg index="1">-->
-            <!--<list>-->
-                <!--<ref bean="jedis.shardInfo.default"/>-->
-            <!--</list>-->
-        <!--</constructor-arg>-->
-    <!--</bean>-->
-
-    <!--&lt;!&ndash; JEDIS连接池配置 &ndash;&gt;-->
-    <!--<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">-->
-        <!--<property name="maxTotal" value="100" />-->
-        <!--<property name="maxIdle" value="20" />-->
-        <!--<property name="maxWaitMillis" value="5000" />-->
-        <!--<property name="testOnBorrow" value="true" />-->
-    <!--</bean>-->
-
-    <!--&lt;!&ndash; JEDIS SHARD信息配置[START]      在此添加REDIS集群配置 &ndash;&gt;-->
-    <!--<bean id="jedis.shardInfo.default" class="redis.clients.jedis.JedisShardInfo">-->
-        <!--<constructor-arg index="0" value="localhost" />-->
-        <!--<constructor-arg index="1" type="int" value="6379" />-->
-        <!--<constructor-arg index="2" type="java.lang.String" value="localhost" />-->
-    <!--</bean>-->
-    <!-- JEDIS SHARD信息配置 [END] -->
-
-
-    <!-- 缓存代理，使用缓存内容请使用本代理进行操作 请使用接口进行注入 -->
-    <!--<bean id="cacheProxy" class="common.Redis.RedisCGlibProxy">-->
-    <!--<property name="shardedJedisPool">-->
-    <!--<ref bean="shardedJedisPool" />-->
-    <!--</property>-->
-    <!--</bean>-->
-    <!--<bean id="redisCache" class="common.Redis.RedisCache">-->
-        <!--<property name="shardedJedisPool" ref="shardedJedisPool"/>-->
-    <!--</bean>-->
-
-
-    <!--<bean id="redisUtils" class="common.Redis.CacheProxy">-->
-        <!--<property name="shardedJedisPool" ref="shardedJedisPool"/>-->
-    <!--</bean>-->
-
-
-
     <context:property-placeholder ignore-unresolvable="true" location="classpath:*.properties"/>
 
     <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
@@ -65,12 +18,8 @@
         <constructor-arg index="2" value="${redis.port}" type="int" />
          <constructor-arg index="3" value="${redis.timeout}" type="int" />
         <constructor-arg index="4" value="${redis.password}"/>
-        <!--<constructor-arg index="5" value="${redis.database}" type="int" />-->
+        <constructor-arg index="5" value="${redis.db}" type="int" />
         <!--<constructor-arg index="6" value="${redis.clientName}"/>-->
-    </bean>
-
-    <bean class="redis.clients.jedis.Jedis" id="jedis">
-        <property name="dataSource" ref="jedisPool"/>
     </bean>
 
 </beans>

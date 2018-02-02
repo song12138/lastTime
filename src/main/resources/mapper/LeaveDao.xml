@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pro.dao.LeaveDao">
+
+
+    <insert id="saveLeave" parameterType="Leave">
+        INSERT INTO
+        leave (
+         id,
+        user_name,
+        user_office,
+        start_time,
+        days,
+        leave_type,
+        leaveReason,
+        apply_time,
+        processs_id
+        )VALUES (
+        #{id},
+        #{userName},
+        #{userOffice},
+        #{startTime},
+        #{days},
+        #{leaveType},
+        #{leaveReason},
+        #{applyTime},
+        #{processsId}
+        )
+</insert>
+    
+    
+    <update id="update" parameterType="Leave">
+        UPDATE leave SET
+        id=#{id},
+        user_name=#{userName},
+        user_office=#{userOffice},
+        start_time=#{startTime},
+        days=#{days},
+        leave_type=#{leaveType},
+        leaveReason=#{leaveReason},
+        apply_time=#{applyTime},
+        processs_id=#{processsId}
+    </update>
+
+    <select id="get" parameterType="java.lang.String">
+        SELECT *
+        FROM
+        leave
+        WHERE
+        id=#{id}
+    </select>
+
+</mapper>

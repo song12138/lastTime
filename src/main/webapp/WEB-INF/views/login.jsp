@@ -22,6 +22,8 @@
     <input type="checkbox" name="rememberMe">
     <input type="submit" value="确认"/>
     <p>${error}</p>
+    <custom:Hello/>
+    <custom:Hello2>mmp</custom:Hello2>
 </form>
 
 </body>
